@@ -1,0 +1,957 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ALL IN Summer Program</title>
+  <style>
+    :root {
+      --black: #0c0c0d;
+      --ink: #181818;
+      --muted: #686868;
+      --line: #ded8cf;
+      --orange: #f37021;
+      --orange-soft: #fff0e7;
+      --paper: #fbf7f0;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(12, 12, 13, .14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--paper);
+      line-height: 1.45;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .95rem clamp(1rem, 4vw, 4rem);
+      background: rgba(12, 12, 13, .96);
+      color: var(--white);
+      border-bottom: 4px solid var(--orange);
+    }
+
+    .brand {
+      display: grid;
+      gap: .04rem;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .brand strong {
+      font-size: 1.18rem;
+      line-height: 1;
+      letter-spacing: .06em;
+    }
+
+    .brand span {
+      color: #d7d7d7;
+      font-size: .75rem;
+      letter-spacing: .16em;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: .92rem;
+    }
+
+    .nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.7rem;
+      padding: .72rem 1.05rem;
+      border: 1px solid var(--black);
+      border-radius: .45rem;
+      background: var(--black);
+      color: var(--white);
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .button.orange {
+      border-color: var(--orange);
+      background: var(--orange);
+      color: var(--black);
+    }
+
+    .button.ghost {
+      background: transparent;
+      color: var(--black);
+    }
+
+    .hero {
+      min-height: calc(100vh - 4.2rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(19rem, 32rem);
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+      padding: clamp(2rem, 6vw, 4.8rem) clamp(1rem, 4vw, 4rem);
+    }
+
+    .eyebrow {
+      margin: 0 0 .75rem;
+      color: var(--orange);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .85rem;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 11ch;
+      margin-bottom: .9rem;
+      color: var(--black);
+      font-size: clamp(3.1rem, 8vw, 6.4rem);
+      line-height: .92;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+    }
+
+    .hero-copy {
+      max-width: 43rem;
+      color: #3c3c3c;
+      font-size: clamp(1.06rem, 2vw, 1.24rem);
+    }
+
+    .hero-actions,
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: 1.4rem;
+    }
+
+    .quick-info {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .8rem;
+      max-width: 43rem;
+      margin-top: 1.8rem;
+    }
+
+    .info-tile {
+      padding: .95rem;
+      border: 1px solid var(--line);
+      border-radius: .45rem;
+      background: rgba(255, 255, 255, .8);
+    }
+
+    .info-tile strong {
+      display: block;
+      font-size: 1.05rem;
+    }
+
+    .info-tile span {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .photo {
+      min-height: 34rem;
+      border-radius: .55rem;
+      background:
+        linear-gradient(180deg, rgba(12, 12, 13, .04), rgba(12, 12, 13, .42)),
+        url("https://images.unsplash.com/photo-1516731415730-0c607149933a?auto=format&fit=crop&w=1200&q=80") center/cover;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-note {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      padding: 1rem;
+      border-radius: .45rem;
+      background: rgba(255, 255, 255, .93);
+      border-left: 5px solid var(--orange);
+      font-weight: 800;
+    }
+
+    .section {
+      padding: clamp(2.3rem, 5vw, 4rem) clamp(1rem, 4vw, 4rem);
+    }
+
+    .section h2 {
+      margin-bottom: .45rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .lede {
+      max-width: 48rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: .8rem;
+      margin-top: 1.4rem;
+    }
+
+    .price-card {
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--orange);
+      border-radius: .45rem;
+      background: var(--white);
+    }
+
+    .price-card span {
+      display: block;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .price-card strong {
+      display: block;
+      margin-top: .25rem;
+      font-size: 1.55rem;
+      line-height: 1.1;
+    }
+
+    .availability-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .8rem;
+      margin-top: 1.2rem;
+    }
+
+    .availability-card {
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: .45rem;
+      background: var(--white);
+    }
+
+    .availability-card strong,
+    .availability-card span {
+      display: block;
+    }
+
+    .availability-card span {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .meter {
+      height: .55rem;
+      margin: .7rem 0 .45rem;
+      border-radius: 999px;
+      background: #ece7df;
+      overflow: hidden;
+    }
+
+    .meter div {
+      height: 100%;
+      background: var(--orange);
+    }
+
+    .schedule-wrap {
+      background: var(--white);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .schedule-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 24rem);
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: start;
+    }
+
+    .week-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .week {
+      border: 1px solid var(--line);
+      border-radius: .45rem;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .week-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      padding: .9rem 1rem;
+      background: #111;
+      color: #fff;
+    }
+
+    .week-head strong {
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .week-head button {
+      border: 1px solid rgba(255, 255, 255, .45);
+      border-radius: .4rem;
+      background: transparent;
+      color: #fff;
+      padding: .45rem .65rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .day-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: .65rem;
+      padding: .85rem;
+    }
+
+    .day {
+      min-height: 7rem;
+      border: 1px solid var(--line);
+      border-radius: .4rem;
+      background: #fff;
+      text-align: left;
+      cursor: pointer;
+      padding: .7rem;
+      transition: border-color .16s ease, background .16s ease, transform .16s ease;
+    }
+
+    .day:hover {
+      border-color: var(--orange);
+      transform: translateY(-1px);
+    }
+
+    .day.selected {
+      border-color: var(--orange);
+      background: var(--orange-soft);
+      box-shadow: inset 0 0 0 2px rgba(243, 112, 33, .18);
+    }
+
+    .day.off {
+      cursor: default;
+      color: var(--muted);
+      background: #f4f1ec;
+    }
+
+    .day.off:hover {
+      border-color: var(--line);
+      transform: none;
+    }
+
+    .day strong {
+      display: block;
+      margin-bottom: .2rem;
+      font-size: .98rem;
+    }
+
+    .day span {
+      display: block;
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    .day .focus {
+      margin-top: .55rem;
+      color: var(--black);
+      font-weight: 800;
+      font-size: .82rem;
+    }
+
+    .summary-card,
+    form {
+      border: 1px solid var(--line);
+      border-radius: .5rem;
+      background: var(--white);
+      box-shadow: 0 12px 28px rgba(12, 12, 13, .08);
+    }
+
+    .summary-card {
+      position: sticky;
+      top: 5.3rem;
+      padding: 1rem;
+    }
+
+    .summary-card h3 {
+      margin-bottom: .65rem;
+      text-transform: uppercase;
+      font-size: 1.05rem;
+    }
+
+    .selected-list {
+      min-height: 4rem;
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+
+    .selected-list li {
+      margin-bottom: .25rem;
+    }
+
+    .payment {
+      margin-top: 1rem;
+      padding: .85rem;
+      border-radius: .4rem;
+      background: var(--orange-soft);
+      border: 1px solid rgba(243, 112, 33, .26);
+    }
+
+    .payment strong {
+      display: block;
+      color: var(--black);
+    }
+
+    .signup-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 28rem);
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: start;
+    }
+
+    form {
+      display: grid;
+      gap: 1rem;
+      padding: 1.1rem;
+    }
+
+    label {
+      display: grid;
+      gap: .35rem;
+      font-weight: 800;
+      font-size: .93rem;
+    }
+
+    input {
+      width: 100%;
+      min-height: 2.85rem;
+      padding: .72rem .78rem;
+      border: 1px solid #cfc8be;
+      border-radius: .4rem;
+      background: #fff;
+      color: var(--black);
+    }
+
+    select {
+      width: 100%;
+      min-height: 2.85rem;
+      padding: .72rem .78rem;
+      border: 1px solid #cfc8be;
+      border-radius: .4rem;
+      background: #fff;
+      color: var(--black);
+      font: inherit;
+    }
+
+    input:focus {
+      outline: 3px solid rgba(243, 112, 33, .18);
+      border-color: var(--orange);
+    }
+
+    select:focus {
+      outline: 3px solid rgba(243, 112, 33, .18);
+      border-color: var(--orange);
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .success {
+      display: none;
+      padding: .85rem;
+      border-radius: .4rem;
+      border: 1px solid rgba(243, 112, 33, .38);
+      background: var(--orange-soft);
+      font-weight: 800;
+    }
+
+    .success.show {
+      display: block;
+    }
+
+    footer {
+      padding: 1.25rem clamp(1rem, 4vw, 4rem);
+      background: #111;
+      color: #d7d7d7;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .schedule-shell,
+      .signup-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-card {
+        position: static;
+      }
+
+      .pricing-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .availability-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav a:not(.button) {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      h1 {
+        font-size: 3.25rem;
+      }
+
+      .photo {
+        min-height: 22rem;
+      }
+
+      .quick-info,
+      .pricing-grid,
+      .availability-grid,
+      .day-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .week-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <strong>ALL IN</strong>
+      <span>Summer Program</span>
+    </div>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#pricing">Pricing</a>
+      <a href="#schedule">Schedule</a>
+      <a class="button orange" href="#signup">Sign Up</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Baseball training</p>
+        <h1>ALL IN</h1>
+        <p class="hero-copy">A small-group summer program built around strength and agility, hitting, and glove work. Pick the week or days you want, submit the signup, then send payment through Zelle.</p>
+        <div class="hero-actions">
+          <a class="button orange" href="#schedule">Pick Dates</a>
+          <a class="button ghost" href="#pricing">See Pricing</a>
+        </div>
+        <div class="quick-info">
+          <div class="info-tile">
+            <strong>Starts next week</strong>
+            <span>June 29-July 23</span>
+          </div>
+          <div class="info-tile">
+            <strong>Times vary</strong>
+            <span>Shown on each signup day</span>
+          </div>
+          <div class="info-tile">
+            <strong>Max 4 per group</strong>
+            <span>More interest may open another slot</span>
+          </div>
+        </div>
+      </div>
+      <aside class="photo" aria-label="Baseball training">
+        <div class="photo-note">Lock in a week or grab individual days.</div>
+      </aside>
+    </section>
+
+    <section class="section" id="pricing">
+      <p class="eyebrow">Pricing</p>
+      <h2>Simple Weekly Rates</h2>
+      <p class="lede">Weekly price is per player and depends on the size of the group. Day passes are available for individual sessions.</p>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <span>1 player</span>
+          <strong>$300</strong>
+          <span>per week</span>
+        </div>
+        <div class="price-card">
+          <span>2 players</span>
+          <strong>$225</strong>
+          <span>per player / week</span>
+        </div>
+        <div class="price-card">
+          <span>3 players</span>
+          <strong>$175</strong>
+          <span>per player / week</span>
+        </div>
+        <div class="price-card">
+          <span>4 players</span>
+          <strong>$150</strong>
+          <span>per player / week</span>
+        </div>
+        <div class="price-card">
+          <span>Day pass</span>
+          <strong>$50</strong>
+          <span>per session</span>
+        </div>
+      </div>
+      <p class="lede" style="margin-top: 1rem;">Max 4 players per weekly group. The weekly rate updates as players sign up. If more than 4 players want the same week, I will look at opening another slot.</p>
+      <div class="availability-grid" aria-label="Weekly availability">
+        <div class="availability-card" data-availability-card="week-1">
+          <strong>Week 1</strong>
+          <span data-count>Loading...</span>
+          <div class="meter" aria-hidden="true"><div data-meter style="width: 0%;"></div></div>
+          <span data-price></span>
+        </div>
+        <div class="availability-card" data-availability-card="week-2">
+          <strong>Week 2</strong>
+          <span data-count>Loading...</span>
+          <div class="meter" aria-hidden="true"><div data-meter style="width: 0%;"></div></div>
+          <span data-price></span>
+        </div>
+        <div class="availability-card" data-availability-card="week-3">
+          <strong>Week 3</strong>
+          <span data-count>OFF</span>
+          <div class="meter" aria-hidden="true"><div data-meter style="width: 0%;"></div></div>
+          <span data-price>No sessions</span>
+        </div>
+        <div class="availability-card" data-availability-card="week-4">
+          <strong>Week 4</strong>
+          <span data-count>Loading...</span>
+          <div class="meter" aria-hidden="true"><div data-meter style="width: 0%;"></div></div>
+          <span data-price></span>
+        </div>
+      </div>
+      <p class="small" style="margin-top: .8rem;">Full-week signups count toward the 4-player cap. Day passes do not hold a weekly spot until I confirm them.</p>
+    </section>
+
+    <section class="section schedule-wrap" id="schedule">
+      <p class="eyebrow">Schedule</p>
+      <h2>Pick Your Dates</h2>
+      <p class="lede">Click a full week or choose individual days. Each date shows the time for that session.</p>
+      <div class="schedule-shell">
+        <div class="week-list" id="weekList"></div>
+        <aside class="summary-card">
+          <h3>Selected Dates</h3>
+          <ul class="selected-list" id="selectedList">
+            <li>No dates selected yet.</li>
+          </ul>
+          <div class="payment">
+            <strong>Zelle</strong>
+            Send payment to 361-249-1659 after submitting.
+          </div>
+          <p class="small">If a group has more than 4 players interested, I will look at opening another time slot.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="signup">
+      <div class="signup-grid">
+        <div>
+          <p class="eyebrow">Signup</p>
+          <h2>Submit Your Spot</h2>
+          <p class="lede">Keep it simple: names, contact info, and the dates selected above. Signups save to the backend and can show up on your calendar feed.</p>
+        </div>
+        <form id="signupForm">
+          <div class="success" id="successMessage" role="status">Signup received.</div>
+          <label>
+            Parent name
+            <input name="parentName" autocomplete="name" required>
+          </label>
+          <label>
+            Player name
+            <input name="playerName" required>
+          </label>
+          <label>
+            Phone number
+            <input name="phone" type="tel" autocomplete="tel" required>
+          </label>
+          <label>
+            Signup type
+            <select name="signupType" required>
+              <option value="">Choose one</option>
+              <option value="full-week">Full week</option>
+              <option value="day-pass">Day pass - $50 per session</option>
+            </select>
+          </label>
+          <input type="hidden" name="selectedDates" id="selectedDatesInput">
+          <input type="hidden" name="selectedDayIds" id="selectedDayIdsInput">
+          <input type="hidden" name="weekIds" id="weekIdsInput">
+          <button class="button orange" type="submit">Submit Signup</button>
+          <p class="small" id="signupStatus">Payment through Zelle: 361-249-1659. The page will show the current weekly rate from confirmed signups.</p>
+          <p class="small">Coach calendar feed for michael.berglund@heatbaseballclub.com: <a href="/calendar.ics">/calendar.ics</a></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>ALL IN Summer Program | Baseball training | Times shown on schedule</small>
+  </footer>
+
+  <script>
+    const weeks = [
+      {
+        label: "Week 1",
+        range: "June 29-July 3",
+        days: [
+          { id: "2026-06-29", weekId: "week-1", day: "Mon", date: "Jun 29", time: "3:30-5:00 PM", focus: "S&A + Hitting" },
+          { id: "2026-06-30", weekId: "week-1", day: "Tue", date: "Jun 30", time: "4:00-5:30 PM", focus: "Glove Work + Throwing + Light S&A" },
+          { id: "2026-07-01", weekId: "week-1", day: "Wed", date: "Jul 1", time: "3:00-4:30 PM", focus: "S&A + Hitting" },
+          { id: "2026-07-02", weekId: "week-1", day: "Thu", date: "Jul 2", time: "4:00-5:30 PM", focus: "Glove Work + Throwing + Light S&A" },
+          { id: "2026-07-03", weekId: "week-1", day: "Fri", date: "Jul 3", time: "TBD", focus: "S&A + Hitting" }
+        ]
+      },
+      {
+        label: "Week 2",
+        range: "July 6-10",
+        days: [
+          { id: "2026-07-06", weekId: "week-2", day: "Mon", date: "Jul 6", time: "3:30-5:00 PM", focus: "S&A + Hitting" },
+          { id: "2026-07-07", weekId: "week-2", day: "Tue", date: "Jul 7", time: "4:00-5:30 PM", focus: "Glove Work + Throwing + Light S&A" },
+          { id: "2026-07-08", weekId: "week-2", day: "Wed", date: "Jul 8", time: "3:00-4:30 PM", focus: "S&A + Hitting" },
+          { id: "2026-07-09", weekId: "week-2", day: "Thu", date: "Jul 9", time: "4:00-5:30 PM", focus: "Glove Work + Throwing + Light S&A" },
+          { id: "2026-07-10", weekId: "week-2", day: "Fri", date: "Jul 10", time: "3:30-5:00 PM", focus: "S&A + Hitting" }
+        ]
+      },
+      {
+        label: "Week 3",
+        range: "July 13-17 - OFF",
+        days: [
+          { id: "2026-07-13", weekId: "week-3", day: "Mon", date: "Jul 13", time: "OFF", focus: "No session" },
+          { id: "2026-07-14", weekId: "week-3", day: "Tue", date: "Jul 14", time: "OFF", focus: "No session" },
+          { id: "2026-07-15", weekId: "week-3", day: "Wed", date: "Jul 15", time: "OFF", focus: "No session" },
+          { id: "2026-07-16", weekId: "week-3", day: "Thu", date: "Jul 16", time: "OFF", focus: "No session" },
+          { id: "2026-07-17", weekId: "week-3", day: "Fri", date: "Jul 17", time: "OFF", focus: "No session" }
+        ]
+      },
+      {
+        label: "Week 4",
+        range: "July 20-23",
+        days: [
+          { id: "2026-07-20", weekId: "week-4", day: "Mon", date: "Jul 20", time: "3:30-5:00 PM", focus: "S&A + Hitting" },
+          { id: "2026-07-21", weekId: "week-4", day: "Tue", date: "Jul 21", time: "4:00-5:30 PM", focus: "Glove Work + Throwing + Light S&A" },
+          { id: "2026-07-22", weekId: "week-4", day: "Wed", date: "Jul 22", time: "3:00-4:30 PM", focus: "S&A + Hitting" },
+          { id: "2026-07-23", weekId: "week-4", day: "Thu", date: "Jul 23", time: "4:00-5:30 PM", focus: "Glove Work + Throwing + Light S&A" }
+        ]
+      }
+    ];
+
+    const selected = new Map();
+    const weekList = document.querySelector("#weekList");
+    const selectedList = document.querySelector("#selectedList");
+    const selectedDatesInput = document.querySelector("#selectedDatesInput");
+    const selectedDayIdsInput = document.querySelector("#selectedDayIdsInput");
+    const weekIdsInput = document.querySelector("#weekIdsInput");
+    const signupStatus = document.querySelector("#signupStatus");
+    let latestAvailability = [];
+
+    function renderSchedule() {
+      weekList.innerHTML = weeks.map((week, index) => `
+        <article class="week">
+          <div class="week-head">
+            <div>
+              <strong>${week.label}</strong>
+              <span>${week.range}</span>
+            </div>
+            <button type="button" data-week="${index}">Select Week</button>
+          </div>
+          <div class="day-grid">
+            ${week.days.map(day => `
+              <button class="day ${day.time === "OFF" ? "off" : ""}" type="button" data-day="${day.id}" ${day.time === "OFF" ? "disabled" : ""}>
+                <strong>${day.day}</strong>
+                <span>${day.date}</span>
+                <span>${day.time || "3:30-5:00 PM"}</span>
+                <span class="focus">${day.focus}</span>
+              </button>
+            `).join("")}
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function getDayById(id) {
+      return weeks.flatMap(week => week.days).find(day => day.id === id);
+    }
+
+    function updateSummary() {
+      document.querySelectorAll(".day").forEach(button => {
+        button.classList.toggle("selected", selected.has(button.dataset.day));
+      });
+
+      const values = Array.from(selected.values());
+      selectedList.innerHTML = values.length
+        ? values.map(day => `<li>${day.day}, ${day.date} - ${day.time || "3:30-5:00 PM"} - ${day.focus}</li>`).join("")
+        : "<li>No dates selected yet.</li>";
+
+      selectedDatesInput.value = values
+        .map(day => `${day.day} ${day.date} ${day.time || "3:30-5:00 PM"} (${day.focus})`)
+        .join("; ");
+      selectedDayIdsInput.value = values.map(day => day.id).join(",");
+      weekIdsInput.value = Array.from(new Set(values.map(day => day.weekId))).join(",");
+    }
+
+    function renderAvailability(weeksFromApi) {
+      latestAvailability = weeksFromApi;
+      weeksFromApi.forEach(week => {
+        const card = document.querySelector(`[data-availability-card="${week.id}"]`);
+        if (!card) return;
+
+        const count = card.querySelector("[data-count]");
+        const price = card.querySelector("[data-price]");
+        const meter = card.querySelector("[data-meter]");
+
+        if (week.status === "off") {
+          count.textContent = "OFF";
+          price.textContent = "No sessions";
+          meter.style.width = "0%";
+          return;
+        }
+
+        count.textContent = `${week.confirmed} of ${week.capacity} confirmed`;
+        meter.style.width = `${(week.confirmed / week.capacity) * 100}%`;
+        price.textContent = week.status === "full"
+          ? "Full"
+          : `${week.spotsOpen} spots open - next signup $${week.nextPlayerRate}/week`;
+      });
+    }
+
+    async function loadAvailability() {
+      try {
+        const response = await fetch("/api/availability");
+        if (!response.ok) throw new Error("Could not load availability");
+        const data = await response.json();
+        renderAvailability(data.weeks);
+      } catch {
+        signupStatus.textContent = "Availability is not live. Open this from http://localhost:3000 instead of the file link, and make sure the server is running.";
+      }
+    }
+
+    renderSchedule();
+    updateSummary();
+    loadAvailability();
+
+    weekList.addEventListener("click", event => {
+      const weekButton = event.target.closest("[data-week]");
+      const dayButton = event.target.closest("[data-day]");
+
+      if (weekButton) {
+        const week = weeks[Number(weekButton.dataset.week)];
+        const availableDays = week.days.filter(day => day.time !== "OFF");
+        const allSelected = availableDays.length && availableDays.every(day => selected.has(day.id));
+        availableDays.forEach(day => {
+          if (allSelected) {
+            selected.delete(day.id);
+          } else {
+            selected.set(day.id, day);
+          }
+        });
+        updateSummary();
+      }
+
+      if (dayButton) {
+        const day = getDayById(dayButton.dataset.day);
+        if (selected.has(day.id)) {
+          selected.delete(day.id);
+        } else {
+          selected.set(day.id, day);
+        }
+        updateSummary();
+      }
+    });
+
+    document.querySelector("#signupForm").addEventListener("submit", async event => {
+      event.preventDefault();
+      if (!selected.size) {
+        document.querySelector("#schedule").scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+
+      const form = event.currentTarget;
+      const submission = Object.fromEntries(new FormData(form).entries());
+      submission.selectedDates = Array.from(selected.values()).map(day => `${day.day} ${day.date} ${day.time} (${day.focus})`);
+      submission.selectedDayIds = selectedDayIdsInput.value.split(",").filter(Boolean);
+      submission.weekIds = weekIdsInput.value.split(",").filter(Boolean);
+
+      if (submission.signupType === "full-week") {
+        const selectedWeeks = latestAvailability.filter(week => submission.weekIds.includes(week.id));
+        const fullWeek = selectedWeeks.find(week => week.status === "full" || week.status === "off");
+        if (fullWeek) {
+          signupStatus.textContent = `${fullWeek.label} is not available for full-week signup.`;
+          return;
+        }
+      }
+
+      let response;
+      let result;
+      try {
+        response = await fetch("/api/signup", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(submission)
+        });
+        result = await response.json();
+      } catch {
+        signupStatus.textContent = "This was not saved. Open the site at http://localhost:3000 instead of the file link, and make sure the server is running.";
+        return;
+      }
+
+      if (!response.ok) {
+        signupStatus.textContent = result.error || "Could not save signup.";
+        return;
+      }
+
+      renderAvailability(result.weeks);
+      const estimateText = result.estimates.length
+        ? `Estimated weekly rate after this signup: ${result.estimates.join(", ")}.`
+        : "Day pass is $50 per selected session.";
+      form.reset();
+      selected.clear();
+      updateSummary();
+      document.querySelector("#successMessage").classList.add("show");
+      signupStatus.textContent = `Saved. ${estimateText}`;
+    });
+  </script>
+</body>
+</html>

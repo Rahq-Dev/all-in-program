@@ -1,0 +1,13 @@
+{
+  "name": "all-in-summer-program",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "pages:dev": "wrangler pages dev public --d1 DB=all-in-summer-program",
+    "d1:schema": "wrangler d1 execute all-in-summer-program --file=./schema.sql"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

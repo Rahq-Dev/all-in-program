@@ -1,0 +1,8 @@
+name = "all-in-summer-program"
+compatibility_date = "2026-06-26"
+pages_build_output_dir = "public"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "all-in-summer-program"
+database_id = "037c1a12-d955-4f05-8f14-5383d8110d0a"
